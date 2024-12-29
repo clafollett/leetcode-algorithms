@@ -1,0 +1,3 @@
+[workspace]
+
+members = [ "rust/roman_to_int","rust/two_sum"]
