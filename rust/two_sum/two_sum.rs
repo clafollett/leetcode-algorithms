@@ -1,35 +1,47 @@
 fn main() {
-    let test_cases: Vec<(i32, bool)> = vec![
-        (0, true),
-        (1, true),
-        (11, true),
-        (121, true),
-        (1221, true),
-        (123, false),
-        (12321, true),
-        (123321, true),
-        (123456, false),
-        (1234567, false),
-        (12345678, false),
-        (12345789, false),
+    let test_cases: Vec<(Vec<i32>, i32, Vec<i32>)> = vec![
+        (vec![2, 7, 11, 15], 9, vec![0, 1]),
+        (vec![3, 2, 4], 6, vec![1, 2]),
+        (vec![3, 3], 6, vec![0, 1]),
+        (
+            vec![4, 13, 19, 45, 179, 192, 253, 284, 429, 1287, 2947],
+            537,
+            vec![6, 7],
+        ),
     ];
 
-    for (num, expected) in test_cases {
-        let result = is_palindrome(num);
-        assert!(result == expected);
-        println!("num: {}, is_palindrome: {}", num, result);
+    for (nums, target, expected) in test_cases {
+        let result = two_sum(nums.clone(), target);
+        assert!(result.eq(&expected));
+        println!(
+            "nums: {:?}, target: {}, expected: {:?}",
+            nums, target, expected
+        );
     }
 }
 
-pub fn is_palindrome(x: i32) -> bool {
-    if x < 0 {
-        return false;
+pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
+    let mut i = 0;
+
+    let nums_len = nums.len() as i32;
+
+    while i < nums_len {
+        let mut j: i32 = i + 1;
+
+        while j < nums_len {
+            if (nums[i as usize] + nums[j as usize] == target) {
+                return [i, j].to_vec();
+            }
+
+            if (nums[j as usize - 1] + nums[j as usize] == target) {
+                return [j - 1, j].to_vec();
+            }
+
+            j += 1;
+        }
+
+        i += 1;
     }
 
-    if x >= 0 && x < 10 {
-        return true;
-    }
-
-    let x_str = x.to_string();
-    return x_str.chars().eq(x_str.chars().rev());
+    return vec![];
 }
