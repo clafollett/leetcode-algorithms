@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "001 - Easy - TwoSum",
+            "name": "CSharp 001 - Easy - TwoSum",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "dotnet: build",
@@ -17,6 +17,16 @@
             "logging": {
                 "moduleLoad": false
             }
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Rust - Debug",
+            "preLaunchTask": "rust: build",
+            "program": "${fileDirname}${pathSeparator}target${pathSeparator}${fileBasenameNoExtension}",
+            "args": [],
+            "cwd": "${fileDirname}",
         }
+
     ]
 }

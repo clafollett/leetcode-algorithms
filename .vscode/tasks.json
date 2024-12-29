@@ -1,0 +1,23 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "dotnet: build",
+			"type": "dotnet",
+			"task": "build",
+			"group": {
+				"kind": "build",
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "rust: build",
+			"type": "shell",
+			"command": "rustc -g ${file} --out-dir ${relativeFileDirname}${pathSeparator}target",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		}
+	]
+}
