@@ -8,6 +8,7 @@ fn main() {
         (vec!["flower", "flow", "flight"], "fl"),                    // leetcode match example
         (vec!["dog", "racecar", "car"], ""),                         // leetcode no match example
         (vec!["ab", "a"], "a"),                                      // leetcode - Failed Test Case
+        (vec!["cir", "car"], "c"),                                   // leetcode - Failed Test Case
     ];
 
     for (strs, expected) in test_cases {
@@ -21,57 +22,20 @@ fn main() {
     }
 }
 
-pub fn longest_common_prefix(mut strs: Vec<String>) -> String {
-    // If there are no strings, why continue???
-    if strs.len() == 0 {
-        return "".to_string();
-    }
+pub fn longest_common_prefix(strs: Vec<String>) -> String {
+    // After a number of attempts at a brute force attack with poor performance, I found this idomatic Rust Solution
+    // Ref: https://leetcode.com/problems/longest-common-prefix/discuss/6988/My-4ms-C%2B%2B-solution
+    // This code is simply elegant! So much better than they hack in my history! I love Rust!
+    let result = strs
+        .into_iter()
+        .reduce(|a, c| {
+            a.chars()
+                .zip(c.chars())
+                .take_while(|(a, c)| a == c)
+                .map(|(c, _)| c)
+                .collect()
+        })
+        .unwrap_or(String::new());
 
-    // If there is only one string, it's a no brainer regardless of content
-    if strs.len() == 1 {
-        return strs[0].clone();
-    }
-
-    // Sort so we can find the first mismatch faster.
-    strs.sort();
-
-    let mut str_iter = 0;
-
-    // TODO: Research if `rustc` will optimize this `len()` call away for me in the `while` loop.
-    let strs_len = strs.len();
-    let mut max_common_len = 0;
-
-    while str_iter < strs_len {
-        // If we are at the end of the list, we are done.
-        // We compared it in the previous iteration
-        if str_iter + 1 == strs_len {
-            break;
-        }
-
-        let mut k = 0;
-        let lh = strs[str_iter].as_str();
-        let rh = strs[str_iter + 1].as_str();
-
-        while k < lh.len() {
-            if lh.chars().nth(k) != rh.chars().nth(k) {
-                break;
-            }
-
-            k += 1;
-        }
-
-        if k == 0 {
-            return "".to_string();
-        }
-
-        if k < max_common_len || max_common_len == 0 {
-            max_common_len = k;
-        }
-
-        str_iter += 1;
-    }
-
-    assert!(max_common_len > 0);
-
-    return strs[0][..max_common_len].to_string();
+    return result;
 }
