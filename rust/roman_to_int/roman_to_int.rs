@@ -18,24 +18,33 @@ fn main() {
 }
 
 pub fn roman_to_int(s: String) -> i32 {
-    // Refactored version based on further studies. Converted for loop
-    // to an `rfold` call with an accumlator. This works because we are
-    // adding from right to left so when we meet a token that fits our rule
-    // we can just do a straight up subtraction. Roman Numerals will never all
-    // a lesser valued numeral on the left of a higher one unless its to notate a subtraction
-    return s.chars().rfold(0, |acc, c| {
-        acc + match c {
-            'I' if acc >= 5 => -1,
+    let mut val = 0;
+    let mut prev_char: char = '\0';
+
+    for (_i, c) in s.chars().enumerate() {
+        let mut token_val = match c {
             'I' => 1,
             'V' => 5,
-            'X' if acc >= 100 => -10,
             'X' => 10,
             'L' => 50,
-            'C' if acc >= 500 => -100,
             'C' => 100,
             'D' => 500,
             'M' => 1000,
             _ => 0,
+        };
+
+        // Subtract twice the value of the token to account for the previous token value being added
+        if prev_char == 'I' && (c == 'V' || c == 'X') {
+            token_val -= 2;
+        } else if prev_char == 'X' && (c == 'L' || c == 'C') {
+            token_val -= 20;
+        } else if prev_char == 'C' && (c == 'D' || c == 'M') {
+            token_val -= 200;
         }
-    });
+
+        prev_char = c;
+        val += token_val;
+    }
+
+    return val;
 }
