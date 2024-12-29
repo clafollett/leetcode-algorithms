@@ -29,11 +29,11 @@ pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
         let mut j: i32 = i + 1;
 
         while j < nums_len {
-            if (nums[i as usize] + nums[j as usize] == target) {
+            if nums[i as usize] + nums[j as usize] == target {
                 return [i, j].to_vec();
             }
 
-            if (nums[j as usize - 1] + nums[j as usize] == target) {
+            if nums[j as usize - 1] + nums[j as usize] == target {
                 return [j - 1, j].to_vec();
             }
 
