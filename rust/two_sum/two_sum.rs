@@ -22,11 +22,10 @@ fn main() {
 
 pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
     let mut i = 0;
-
     let nums_len = nums.len() as i32;
 
     while i < nums_len {
-        let mut j: i32 = i + 1;
+        let mut j = i + 1;
 
         while j < nums_len {
             if nums[i as usize] + nums[j as usize] == target {
