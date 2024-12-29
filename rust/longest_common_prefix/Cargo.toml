@@ -1,0 +1,10 @@
+[package]
+name = "longest_common_prefix"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+[[bin]]
+name = "longest_common_prefix"
+path = "longest_common_prefix.rs"

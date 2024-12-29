@@ -7,6 +7,10 @@ name = "is_palindrome"
 version = "0.1.0"
 
 [[package]]
+name = "longest_common_prefix"
+version = "0.1.0"
+
+[[package]]
 name = "roman_to_int"
 version = "0.1.0"
 
