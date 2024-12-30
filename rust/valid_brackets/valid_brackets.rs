@@ -20,34 +20,23 @@ fn main() {
     }
 }
 
+// Refactored original to use a more Rust idiomatic wayx
 pub fn is_valid(s: String) -> bool {
-    // Must at least be an even length to have all matching pairs
     if s.len() == 0 || s.len() % 2 != 0 {
         return false;
     }
 
-    let mut open_bracket_stack: Vec<u8> = Vec::new();
+    let mut stack = Vec::new();
 
     for c in s.bytes() {
-        if c == b'(' || c == b'[' || c == b'{' {
-            open_bracket_stack.push(c);
-            continue;
-        }
-
-        let is_valid_close_bracket = match open_bracket_stack.pop() {
-            Some(open_bracket) => match c {
-                b')' => open_bracket == b'(',
-                b']' => open_bracket == b'[',
-                b'}' => open_bracket == b'{',
-                _ => false,
-            },
-            None => false,
-        };
-
-        if !is_valid_close_bracket {
-            return false;
+        match c {
+            b'(' => stack.push(b')'),
+            b'[' => stack.push(b']'),
+            b'{' => stack.push(b'}'),
+            b')' | b']' | b'}' if stack.pop() != Some(c) => return false,
+            _ => (),
         }
     }
 
-    return open_bracket_stack.is_empty();
+    return stack.is_empty();
 }
