@@ -9,11 +9,11 @@ fn main() {
 
     for (num, expected) in test_cases {
         let result = roman_to_int(num.clone());
-        assert!(result == expected);
         println!(
             "test case: {}, result: {}, expected: {}",
             num, result, expected
         );
+        assert!(result == expected);
     }
 }
 

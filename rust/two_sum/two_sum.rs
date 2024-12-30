@@ -12,11 +12,11 @@ fn main() {
 
     for (nums, target, expected) in test_cases {
         let result = two_sum(nums.clone(), target);
-        assert!(result.eq(&expected));
         println!(
             "nums: {:?}, target: {}, expected: {:?}",
             nums, target, expected
         );
+        assert!(result.eq(&expected));
     }
 }
 

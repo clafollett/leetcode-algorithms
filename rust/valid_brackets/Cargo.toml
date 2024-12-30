@@ -1,0 +1,10 @@
+[package]
+name = "valid_brackets"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+[[bin]]
+name = "valid_brackets"
+path = "valid_brackets.rs"
