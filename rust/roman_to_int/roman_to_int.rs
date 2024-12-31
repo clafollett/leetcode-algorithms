@@ -38,11 +38,11 @@ pub fn roman_to_int(s: String) -> i32 {
         // if the current numeral is target. Subtract double decrementer's
         // token value to account the previous and current iterations.
         // It all comes out in the wash!!!
-        match prev_char {
-            'I' if c == 'V' || c == 'X' => token_val -= 2,
-            'X' if c == 'L' || c == 'C' => token_val -= 20,
-            'C' if c == 'D' || c == 'M' => token_val -= 200,
-            _ => (),
+        token_val -= match prev_char {
+            'I' if c == 'V' || c == 'X' => 2,
+            'X' if c == 'L' || c == 'C' => 20,
+            'C' if c == 'D' || c == 'M' => 200,
+            _ => 0,
         };
 
         prev_char = c;
