@@ -1,14 +1,14 @@
 fn main() {
-    let test_cases: Vec<(String, i32)> = vec![
-        ("III".to_string(), 3),
-        ("IV".to_string(), 4),
-        ("IX".to_string(), 9),
-        ("LVIII".to_string(), 58),
-        ("MCMXCIV".to_string(), 1994),
+    let test_cases: Vec<(&str, i32)> = vec![
+        ("III", 3),
+        ("IV", 4),
+        ("IX", 9),
+        ("LVIII", 58),
+        ("MCMXCIV", 1994),
     ];
 
     for (num, expected) in test_cases {
-        let result = roman_to_int(num.clone());
+        let result = roman_to_int(num.to_string());
         println!(
             "test case: {}, result: {}, expected: {}",
             num, result, expected
@@ -21,7 +21,8 @@ pub fn roman_to_int(s: String) -> i32 {
     let mut val = 0;
     let mut prev_char: char = '\0';
 
-    for (_i, c) in s.chars().enumerate() {
+    for c in s.chars() {
+        // Get the current tokens value...
         let mut token_val = match c {
             'I' => 1,
             'V' => 5,
@@ -33,14 +34,16 @@ pub fn roman_to_int(s: String) -> i32 {
             _ => 0,
         };
 
-        // Subtract twice the value of the token to account for the previous token value being added
-        if prev_char == 'I' && (c == 'V' || c == 'X') {
-            token_val -= 2;
-        } else if prev_char == 'X' && (c == 'L' || c == 'C') {
-            token_val -= 20;
-        } else if prev_char == 'C' && (c == 'D' || c == 'M') {
-            token_val -= 200;
-        }
+        // If our previous numeral is also a decrementer, check to see
+        // if the current numeral is target. Subtract double decrementer's
+        // token value to account the previous and current iterations.
+        // It all comes out in the wash!!!
+        match prev_char {
+            'I' if c == 'V' || c == 'X' => token_val -= 2,
+            'X' if c == 'L' || c == 'C' => token_val -= 20,
+            'C' if c == 'D' || c == 'M' => token_val -= 200,
+            _ => (),
+        };
 
         prev_char = c;
         val += token_val;

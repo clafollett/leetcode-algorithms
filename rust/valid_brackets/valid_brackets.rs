@@ -20,7 +20,7 @@ fn main() {
     }
 }
 
-// Refactored original to use a more Rust idiomatic wayx
+// Refactored original to use a more Rust idiomatic way
 pub fn is_valid(s: String) -> bool {
     if s.len() == 0 || s.len() % 2 != 0 {
         return false;
@@ -28,12 +28,12 @@ pub fn is_valid(s: String) -> bool {
 
     let mut stack = Vec::new();
 
-    for c in s.bytes() {
+    for c in s.chars() {
         match c {
-            b'(' => stack.push(b')'),
-            b'[' => stack.push(b']'),
-            b'{' => stack.push(b'}'),
-            b')' | b']' | b'}' if stack.pop() != Some(c) => return false,
+            '(' => stack.push(')'),
+            '[' => stack.push(']'),
+            '{' => stack.push('}'),
+            ')' | ']' | '}' if stack.pop() != Some(c) => return false,
             _ => (),
         }
     }
