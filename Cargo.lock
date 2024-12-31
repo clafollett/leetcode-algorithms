@@ -15,6 +15,10 @@ name = "merge_two_lists"
 version = "0.1.0"
 
 [[package]]
+name = "remove_duplicates"
+version = "0.1.0"
+
+[[package]]
 name = "roman_to_int"
 version = "0.1.0"
 
