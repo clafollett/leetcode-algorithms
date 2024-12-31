@@ -27,6 +27,10 @@ name = "roman_to_int"
 version = "0.1.0"
 
 [[package]]
+name = "str_str"
+version = "0.1.0"
+
+[[package]]
 name = "two_sum"
 version = "0.1.0"
 
