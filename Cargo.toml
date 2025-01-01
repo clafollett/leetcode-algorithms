@@ -1,3 +1,13 @@
 [workspace]
 
-members = [ "rust/is_palindrome", "rust/longest_common_prefix", "rust/merge_two_lists", "rust/remove_duplicates", "rust/remove_element", "rust/roman_to_int", "rust/str_str","rust/two_sum", "rust/valid_brackets"]
+members = [
+    "rust/0001_two_sum",
+    "rust/0009_is_palindrome",
+    "rust/0013_roman_to_int",
+    "rust/0014_longest_common_prefix",
+    "rust/0020_valid_brackets",
+    "rust/0021_merge_two_lists",
+    "rust/0026_remove_duplicates",
+    "rust/0027_remove_element",
+    "rust/0028_str_str"
+]
