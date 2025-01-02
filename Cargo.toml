@@ -9,5 +9,6 @@ members = [
     "rust/0021_merge_two_lists",
     "rust/0026_remove_duplicates",
     "rust/0027_remove_element",
-    "rust/0028_str_str"
+    "rust/0028_str_str",
+    "rust/0035_search_insert"
 ]
