@@ -24,18 +24,17 @@ fn main() {
             false => Some(Box::new(ListNode::from(&list2))),
         };
 
-        let result = merge_two_lists(list_node1, list_node2);
-        let result_vec: Vec<i32> = match result.is_none() {
-            true => vec![],
-            false => result.unwrap().into(),
+        let result: Vec<i32> = match merge_two_lists(list_node1, list_node2) {
+            None => vec![],
+            Some(node) => node.into(),
         };
 
         println!(
             "list1: {:?}, list2: {:?}, expected: {:?}, result: {:?}",
-            list1, list2, expected, result_vec
+            list1, list2, expected, result
         );
 
-        assert!(result_vec.eq(&expected));
+        assert!(result.eq(&expected));
     }
 }
 
