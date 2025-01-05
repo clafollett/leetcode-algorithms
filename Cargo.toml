@@ -2,6 +2,7 @@
 resolver = "2"
 members = [
     "rust/0001_two_sum",
+    "rust/0002_add_two_numbers",
     "rust/0009_is_palindrome",
     "rust/0013_roman_to_int",
     "rust/0014_longest_common_prefix",
