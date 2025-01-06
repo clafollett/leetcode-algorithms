@@ -7,6 +7,29 @@ fn main() {
             vec![9, 9, 9, 9],
             vec![8, 9, 9, 9, 0, 0, 0, 1],
         ),
+        // Failed test case
+        (
+            vec![9],
+            vec![1, 9, 9, 9, 9, 9, 9, 9, 9, 9],
+            vec![0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        ),
+        (
+            vec![
+                2, 4, 3, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2,
+                4, 3, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2, 4,
+                3, 2, 4, 3, 9,
+            ],
+            vec![
+                5, 6, 4, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2,
+                4, 3, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2, 4, 3, 2, 4,
+                3, 9, 9, 9, 9,
+            ],
+            vec![
+                7, 0, 8, 4, 8, 6, 4, 8, 6, 4, 8, 6, 4, 8, 6, 4, 8, 6, 4, 8, 6, 4, 8, 6, 4, 8, 6, 4,
+                8, 6, 4, 8, 6, 4, 8, 6, 4, 8, 6, 4, 8, 6, 4, 8, 6, 4, 8, 6, 4, 8, 6, 4, 8, 6, 4, 8,
+                6, 1, 4, 3, 9, 1,
+            ],
+        ),
     ];
 
     for (list1, list2, expected) in test_cases {
@@ -79,51 +102,37 @@ impl Into<Vec<i32>> for Box<ListNode> {
 }
 
 pub fn add_two_numbers(
-    l1: Option<Box<ListNode>>,
-    l2: Option<Box<ListNode>>,
+    list1: Option<Box<ListNode>>,
+    list2: Option<Box<ListNode>>,
 ) -> Option<Box<ListNode>> {
-    let val1: i32 = list_to_int(&l1);
-    let val2: i32 = list_to_int(&l2);
+    let mut list1 = list1;
+    let mut list2 = list2;
+    let mut list1 = &mut list1;
+    let mut list2 = &mut list2;
+    let mut result = Some(Box::new(ListNode::new(0)));
+    let mut head = &mut result;
+    let mut remainder = 0;
 
-    let result = val1 + val2;
+    while list1.is_some() || list2.is_some() || remainder > 0 {
+        let mut sum = remainder;
 
-    return Some(Box::new(int_to_list(result)));
-}
+        if let Some(node) = list1 {
+            sum += node.val;
+            list1 = &mut node.next;
+        }
 
-const ASCII_ZERO: i32 = 48;
+        if let Some(node) = list2 {
+            sum += node.val;
+            list2 = &mut node.next;
+        }
 
-fn list_to_int(node: &Option<Box<ListNode>>) -> i32 {
-    let mut result = String::new();
-    let mut current = node;
+        remainder = sum / 10;
 
-    while let Some(node) = current {
-        result.push((node.val + ASCII_ZERO) as u8 as char);
-        current = &node.next;
+        if let Some(node) = head {
+            node.next = Some(Box::new(ListNode::new(sum % 10)));
+            head = &mut node.next;
+        }
     }
 
-    result = result.chars().rev().collect();
-
-    return match result.parse() {
-        Ok(value) => value,
-        Err(_) => 0,
-    };
-}
-
-fn int_to_list(val: i32) -> ListNode {
-    let nums: Vec<i32> = val
-        .to_string()
-        .bytes()
-        .rev()
-        .map(|b| b as i32 - ASCII_ZERO)
-        .collect();
-
-    let mut head = Box::new(ListNode::new(nums[0]));
-    let mut current = &mut head;
-
-    for i in 1..nums.len() {
-        current.next = Some(Box::new(ListNode::new(nums[i])));
-        current = current.next.as_mut().unwrap();
-    }
-
-    return *head;
+    return result.unwrap().next;
 }
