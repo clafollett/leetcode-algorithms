@@ -9,7 +9,7 @@ fn main() {
     for (val, expected) in test_cases {
         let result = length_of_last_word(val.to_string());
         println!(
-            "string: {}, result: {}, expected: {}",
+            "string: {:?}, result: {}, expected: {}",
             val, result, expected
         );
         assert!(result == expected);

@@ -10,7 +10,7 @@ fn main() {
     for (num, expected) in test_cases {
         let result = roman_to_int(num.to_string());
         println!(
-            "test case: {}, result: {}, expected: {}",
+            "test case: {:?}, result: {}, expected: {}",
             num, result, expected
         );
         assert!(result == expected);
