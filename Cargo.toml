@@ -12,4 +12,5 @@ members = [
     "rust/0027_remove_element",
     "rust/0028_str_str",
     "rust/0035_search_insert",
+    "rust/0058_length_of_last_word",
 ]
