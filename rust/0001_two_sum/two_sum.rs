@@ -13,8 +13,8 @@ fn main() {
     for (nums, target, expected) in test_cases {
         let result = two_sum(nums.clone(), target);
         println!(
-            "nums: {:?}, target: {}, expected: {:?}",
-            nums, target, expected
+            "nums: {:?}, target: {}, expected: {:?}, actual: {:?}",
+            nums, target, expected, result
         );
         assert!(result.eq(&expected));
     }
