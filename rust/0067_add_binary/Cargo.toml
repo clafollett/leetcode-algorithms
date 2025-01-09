@@ -1,0 +1,10 @@
+[package]
+name = "add_binary"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+[[bin]]
+name = "add_binary"
+path = "add_binary.rs"
