@@ -4,14 +4,14 @@
 
 | Day | Time (ET) | Block | Notes |
 |-----|-----------|-------|-------|
-| **Mon-Fri** | 07:30 - 10:15 | **Magnet #1 Algorithms** | 90m focus → 10m break → 60m focus → 10m break |
-| | 10:15 - 11:00 | **Job Burst A** | 25m focus → 5m break → 15m sprint |
-| | 11:00 - 12:00 | **Lunch & Angus Walk** | Screen-free recharge |
-| | 12:00 - 14:30 | **Magnet #2 MCPGen / OSS** | 90m focus → 10m break → 40m focus → 10m break |
-| | 14:30 - 15:00 | **Job Burst B** | 25m focus → 5m break |
-| | 15:15 - 16:15 | **Learning / Flex** | Docs, videos, pairing |
-| | 16:15 - 16:45 | **Angus Walk** | End-of-day reset |
-| **Friday** | 16:15 - 17:30 | **Follow-up & Pipeline** | Review status, send follow-ups |
+| **Mon-Fri** | 08:15 - 11:00 | **Magnet #1 Algorithms** | 90m focus → 10m break → 60m focus → 10m break |
+| | 11:00 - 11:45 | **Job Burst A** | 25m focus → 5m break → 15m sprint |
+| | 11:45 - 12:45 | **Lunch & Angus Walk** | Screen-free recharge |
+| | 12:45 - 15:15 | **Magnet #2 MCPGen / OSS** | 90m focus → 10m break → 40m focus → 10m break |
+| | 15:15 - 15:45 | **Job Burst B** | 25m focus → 5m break |
+| | 16:00 - 17:00 | **Learning / Flex** | Docs, videos, pairing |
+| | 17:00 - 17:30 | **Angus Walk** | End-of-day reset |
+| **Friday** | 17:00 - 18:15 | **Follow-up & Pipeline** | Review status, send follow-ups |
 | **Saturday** | 09:00 - 12:00 | **Feature Sprint** | Ship demo-able personal project work |
 | | 12:00 - 14:00 | **Chores / Errands** | Domestic backlog |
 | | 14:00 - 16:00 | **Learning Jam** | Course / pair-coding |
