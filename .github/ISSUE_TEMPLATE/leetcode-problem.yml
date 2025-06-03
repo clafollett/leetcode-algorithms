@@ -1,0 +1,25 @@
+name: "LeetCode 🧩: {{ slug }}"
+title: "[LeetCode] {{ title }} ({{ difficulty }})"
+description: "Auto-generated training issue for a LeetCode problem."
+labels:
+  - training
+  - leetcode
+  - "{{ difficulty | downcase }}"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Problem link:** {{ url }}
+
+        **One-line summary (paraphrased):**
+        {{ summary }}
+
+        ---
+
+        ### Checklist
+        - [ ] **Draft ⭐** – first solution committed  
+        - [ ] **Optimise 🔧** – refine algorithm & complexity  
+        - [ ] **Unit tests ✅** – edge cases covered  
+        - [ ] **Close 🔒** – merge PR, reference commit
+
+        <!-- autopopulated -->
